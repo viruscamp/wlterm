@@ -28,6 +28,11 @@
 
 #define SHL_PTY_BUFSIZE 16384
 
+// Since glibc 2.26, SIGUNUSED is no longer defined on any architecture
+#ifndef SIGUNUSED
+	#define SIGUNUSED SIGSYS
+#endif
+
 /*
  * Ring Buffer
  * Our PTY helper buffers outgoing data so the caller can rely on write
